@@ -3,7 +3,7 @@ import pygame, random
 class Bloco(pygame.sprite.Sprite):
   def __init__(self,largura,altura,x,y):
           super().__init__()
-          self.image = pygame.Surface([largura,altura])
+          self.image = pygame.image.load("carrinho2.jpg").convert_alpha()
           self.rect = self.image.get_rect()
           self.rect.x = x
           self.rect.y = y
@@ -16,4 +16,4 @@ class Bloco(pygame.sprite.Sprite):
 
       if self.rect.y > 800:
         self.rect.y = 0
-        self.rect.x = random.randint(0, 1200)
+        self.rect.x = random.randint(0, 750)

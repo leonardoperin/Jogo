@@ -15,13 +15,13 @@ try:
 except:
   print("O modulo pygame não foi iniciado com sucesso")
 
-LARGURA = 1200
+LARGURA = 750
 ALTURA = 800
 tela = pygame.display.set_mode([LARGURA, ALTURA])
 pygame.display.set_caption("Corrida Interminável")
 
 estrada = Estrada(0,0)
-carro = Carro(527,630)
+carro = Carro(315,630)
 
 listaObjetos = pygame.sprite.Group()
 listaObjetos.add(estrada)
@@ -39,20 +39,19 @@ terminou = False
 
 while not terminou:
   filaEventos = pygame.event.get()
+  bloco.cair()
   for evento in filaEventos:
       if evento.type == pygame.QUIT:
           terminou = True
 
   carro.mover()
 
-  bloco.cair()
-
   bateu = pygame.sprite.collide_rect(carro, bloco)
   if bateu == True:
       print ("Você perdeu")
       terminou = True
 
-  clock.tick(128)
+  clock.tick(1000)
 
   tela.fill(BRANCO)
   listaObjetos.draw(tela)
